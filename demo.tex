@@ -1,0 +1,100 @@
+% demo.tex — HUST Beamer Theme 演示文件
+% 编译方式: xelatex demo.tex (需编译两次以获得正确页码和导航)
+
+\documentclass[aspectratio=169]{beamer}
+% 4:3 比例请用: \documentclass{beamer}
+
+\usepackage{ctex}  % 中文支持
+\usetheme{HUST}
+
+% === 设置 Logo 路径 ===
+\hustlogo{xiaohui.png}
+\physicslogo{物理学院 logo.png}
+\gravitylogo{国家精密重力测量科学中心LOGO-左右带英文.png}
+
+% === 演讲信息 ===
+\title{HUST Beamer Theme Demo}
+\subtitle{华中科技大学 Beamer 主题演示}
+\author{Your Name}
+\institute{华中科技大学}
+\date{\today}
+
+\begin{document}
+
+% ===== 首页（必须使用 plain 选项以隐藏侧边栏）=====
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ===== 目录 =====
+\begin{frame}{目录}
+  \tableofcontents
+\end{frame}
+
+% ===== 第一节 =====
+\section{研究背景}
+
+\begin{frame}{脉冲星计时阵列简介}
+  \begin{itemize}
+    \item 脉冲星计时阵列（PTA）是探测纳赫兹引力波的重要手段
+    \item 红噪声是 PTA 数据分析中的主要挑战之一
+    \item 传统方法在去除红噪声时存在局限性
+  \end{itemize}
+
+  \begin{block}{主要困难}
+    红噪声与引力波信号在频域上高度重叠，分离难度大。
+  \end{block}
+\end{frame}
+
+% ===== 第二节 =====
+\section{方法}
+
+\begin{frame}{新方法概述}
+  \begin{itemize}
+    \item 提出基于贝叶斯框架的红噪声建模方案
+    \item 引入自适应频率分辨方法
+    \item 结合 MCMC 采样实现高效参数估计
+  \end{itemize}
+
+  \begin{alertblock}{注意}
+    该方法需要足够长的观测时间基线（$>$ 10 年）。
+  \end{alertblock}
+\end{frame}
+
+% ===== 第三节 =====
+\section{结果}
+
+\begin{frame}{主要结果}
+  \begin{enumerate}
+    \item 噪声去除效果显著提升（信噪比提高 30\%）
+    \item 计算效率相比传统方法提高约 5 倍
+    \item 在模拟和真实 IPTA DR2 数据上均验证有效
+  \end{enumerate}
+
+  \begin{exampleblock}{示例}
+    在 NANOGrav 15yr 数据集上的测试结果表明，
+    新方法能够更准确地恢复注入的引力波信号。
+  \end{exampleblock}
+\end{frame}
+
+% ===== 第四节 =====
+\section{总结与展望}
+
+\begin{frame}{总结与展望}
+  \begin{itemize}
+    \item 本工作提出了一种新的红噪声去除方法
+    \item 在模拟和真实数据上均取得了良好效果
+    \item 未来计划：
+      \begin{itemize}
+        \item 进一步优化算法性能
+        \item 拓展至空间引力波探测器数据分析
+        \item 与国际 PTA 合作组开展联合分析
+      \end{itemize}
+  \end{itemize}
+
+  \vfill
+  \centering
+  {\Large\color{HUSTBlue} 谢谢！}
+\end{frame}
+
+\end{document}

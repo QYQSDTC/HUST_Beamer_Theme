@@ -1,0 +1,218 @@
+% beamerthemeHUST.sty
+% Beamer theme for Huazhong University of Science and Technology (HUST)
+% School of Physics & National Precision Gravity Measurement Facility
+% Berkeley-inspired design with HUST Blue color scheme
+%
+% Usage:
+%   \usetheme{HUST}
+%   \hustlogo{path/to/hust-badge.png}
+%   \physicslogo{path/to/physics-logo.png}
+%   \gravitylogo{path/to/gravity-logo.png}
+%
+% Title page must use [plain] option:
+%   \begin{frame}[plain]
+%     \titlepage
+%   \end{frame}
+
+\ProvidesPackage{beamerthemeHUST}[2025/04/06 v1.0 HUST Physics Beamer Theme]
+
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+
+\mode<presentation>
+
+%% ====================================================================
+%% Color Definitions — HUST Blue (华科蓝)
+%% ====================================================================
+\definecolor{HUSTBlue}{HTML}{00518F}
+\definecolor{HUSTBlueDark}{HTML}{003A66}
+\definecolor{HUSTBlueLight}{HTML}{B8D4E8}
+\definecolor{HUSTGray}{HTML}{F2F2F2}
+
+%% ====================================================================
+%% Load Berkeley-style Sidebar Outer Theme
+%% ====================================================================
+\useoutertheme[left,width=2.2cm,hideothersubsections]{sidebar}
+
+%% ====================================================================
+%% Color Assignments (override sidebar defaults)
+%% ====================================================================
+\setbeamercolor{structure}{fg=HUSTBlue}
+
+% Palette
+\setbeamercolor{palette primary}{bg=HUSTBlue,fg=white}
+\setbeamercolor{palette secondary}{bg=HUSTBlueDark,fg=white}
+\setbeamercolor{palette tertiary}{bg=HUSTBlue!80,fg=white}
+
+% Sidebar
+\setbeamercolor{sidebar left}{bg=HUSTBlue,fg=white}
+\setbeamercolor{palette sidebar primary}{fg=white}
+\setbeamercolor{palette sidebar secondary}{fg=HUSTBlueLight}
+\setbeamercolor{palette sidebar tertiary}{fg=white}
+\setbeamercolor{palette sidebar quaternary}{fg=HUSTBlueLight}
+\setbeamercolor{section in sidebar}{fg=white}
+\setbeamercolor{section in sidebar shaded}{fg=HUSTBlue!30!white}
+\setbeamercolor{subsection in sidebar}{fg=HUSTBlueLight}
+\setbeamercolor{subsection in sidebar shaded}{fg=HUSTBlue!20!white}
+
+% Frame title
+\setbeamercolor{frametitle}{bg=HUSTBlue,fg=white}
+\setbeamercolor{frametitle right}{bg=HUSTBlueDark,fg=white}
+
+% Title page
+\setbeamercolor{title}{fg=HUSTBlue}
+\setbeamercolor{subtitle}{fg=HUSTBlueDark}
+\setbeamercolor{author}{fg=HUSTBlueDark}
+\setbeamercolor{institute}{fg=HUSTBlue!80!black}
+\setbeamercolor{date}{fg=HUSTBlueDark!80}
+
+% Blocks
+\setbeamercolor{block title}{bg=HUSTBlue,fg=white}
+\setbeamercolor{block body}{bg=HUSTGray,fg=black}
+\setbeamercolor{block title alerted}{bg=red!70!black,fg=white}
+\setbeamercolor{block body alerted}{bg=red!10,fg=black}
+\setbeamercolor{block title example}{bg=HUSTBlue!40!green,fg=white}
+\setbeamercolor{block body example}{bg=green!5,fg=black}
+
+% Items
+\setbeamercolor{item}{fg=HUSTBlue}
+\setbeamercolor{subitem}{fg=HUSTBlueDark}
+\setbeamercolor{subsubitem}{fg=HUSTBlue!60}
+
+%% ====================================================================
+%% Sidebar Canvas — solid fill (override gradient default)
+%% ====================================================================
+\setbeamertemplate{sidebar canvas left}[default]
+
+%% ====================================================================
+%% Font Setup
+%% ====================================================================
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\footnotesize}
+\setbeamerfont{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamerfont{footline}{size=\tiny}
+\setbeamerfont{section in sidebar}{size=\scriptsize}
+\setbeamerfont{subsection in sidebar}{size=\tiny}
+\setbeamerfont{block title}{series=\bfseries}
+
+%% ====================================================================
+%% Disable Navigation Symbols
+%% ====================================================================
+\setbeamertemplate{navigation symbols}{}
+
+%% ====================================================================
+%% Logo Path Commands
+%% ====================================================================
+\newcommand{\hustlogo}[1]{\def\beamer@HUST@hustlogo{#1}}
+\newcommand{\physicslogo}[1]{\def\beamer@HUST@physicslogo{#1}}
+\newcommand{\gravitylogo}[1]{\def\beamer@HUST@gravitylogo{#1}}
+\def\beamer@HUST@hustlogo{}
+\def\beamer@HUST@physicslogo{}
+\def\beamer@HUST@gravitylogo{}
+
+%% ====================================================================
+%% Headline — section name in dark blue bar
+%% ====================================================================
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox to\paperwidth{%
+    \begin{beamercolorbox}[wd=\beamer@sidebarwidth,ht=2.5ex,dp=1ex]{palette primary}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\dimexpr\paperwidth-\beamer@sidebarwidth\relax,%
+      ht=2.5ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{palette secondary}%
+      \usebeamerfont{section in head/foot}\insertsectionhead%
+    \end{beamercolorbox}%
+  }%
+}
+
+%% ====================================================================
+%% Footline — page number in sidebar, author/title in content area
+%% ====================================================================
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox to\paperwidth{%
+    \begin{beamercolorbox}[wd=\beamer@sidebarwidth,ht=2.5ex,dp=1.125ex,center]{palette primary}%
+      \usebeamerfont{footline}\insertframenumber\,/\,\inserttotalframenumber%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\dimexpr\paperwidth-\beamer@sidebarwidth\relax,%
+      ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{palette secondary}%
+      \usebeamerfont{footline}\insertshortauthor\hfill\insertshorttitle%
+    \end{beamercolorbox}%
+  }%
+}
+
+%% ====================================================================
+%% Item Templates
+%% ====================================================================
+\setbeamertemplate{itemize item}{\small$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\scriptsize$\blacktriangleright$}
+\setbeamertemplate{itemize subsubitem}{\small$\bullet$}
+
+%% ====================================================================
+%% Block Templates
+%% ====================================================================
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+%% ====================================================================
+%% Title Page — full-page layout with logos (use with [plain] frame)
+%% ====================================================================
+\defbeamertemplate*{title page}{HUST}[1][]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    %% --- Top decorative bars ---
+    \fill[HUSTBlue]
+      (current page.north west) rectangle ([yshift=-0.55cm]current page.north east);
+    \fill[HUSTBlueDark]
+      ([yshift=-0.55cm]current page.north west) rectangle ([yshift=-0.6cm]current page.north east);
+
+    %% --- Bottom decorative bars ---
+    \fill[HUSTBlueDark]
+      ([yshift=0.35cm]current page.south west) rectangle ([yshift=0.4cm]current page.south east);
+    \fill[HUSTBlue]
+      (current page.south west) rectangle ([yshift=0.35cm]current page.south east);
+
+    %% --- Logos (below top bar) ---
+    \ifx\beamer@HUST@hustlogo\empty\else
+      \node[anchor=north west,inner sep=0]
+        at ([xshift=0.6cm,yshift=-0.85cm]current page.north west)
+        {\includegraphics[height=1.1cm]{\beamer@HUST@hustlogo}};
+    \fi
+    \ifx\beamer@HUST@physicslogo\empty\else
+      \node[anchor=north,inner sep=0]
+        at ([yshift=-0.85cm]current page.north)
+        {\includegraphics[height=1.1cm]{\beamer@HUST@physicslogo}};
+    \fi
+    \ifx\beamer@HUST@gravitylogo\empty\else
+      \node[anchor=north east,inner sep=0]
+        at ([xshift=-0.6cm,yshift=-0.85cm]current page.north east)
+        {\includegraphics[height=0.9cm]{\beamer@HUST@gravitylogo}};
+    \fi
+
+    %% --- Thin separator below logos ---
+    \draw[HUSTBlue!40,line width=0.3pt]
+      ([xshift=0.5cm,yshift=-2.2cm]current page.north west) --
+      ([xshift=-0.5cm,yshift=-2.2cm]current page.north east);
+
+    %% --- Title & Subtitle ---
+    \node[anchor=center,text width=0.85\paperwidth,align=center]
+      at ([yshift=0.4cm]current page.center) {%
+        {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}%
+        \par\vskip0.3em
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}%
+      };
+
+    %% --- Author / Institute / Date ---
+    \node[anchor=center,text width=0.85\paperwidth,align=center]
+      at ([yshift=-1.4cm]current page.center) {%
+        {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}%
+        \par\vskip0.3em
+        {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}%
+        \par\vskip0.3em
+        {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}%
+      };
+  \end{tikzpicture}%
+}
+
+\mode<all>
