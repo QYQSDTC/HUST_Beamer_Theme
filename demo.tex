@@ -34,6 +34,7 @@
 % ===== 第一节 =====
 \section{研究背景}
 
+\subsection{脉冲星计时阵列简介}
 \begin{frame}{脉冲星计时阵列简介}
   \begin{itemize}
     \item 脉冲星计时阵列（PTA）是探测纳赫兹引力波的重要手段
@@ -46,13 +47,45 @@
   \end{block}
 \end{frame}
 
+\subsection{引力波背景}
+\begin{frame}{引力波背景}
+  \begin{itemize}
+    \item 随机引力波背景（GWB）由宇宙中大量双黑洞系统叠加产生
+    \item 其特征频谱呈幂律形式：$h_c(f) \propto f^{\alpha}$
+    \item NANOGrav 于 2023 年首次报告了显著的 GWB 证据
+  \end{itemize}
+\end{frame}
+
+\subsection{观测数据概况}
+\begin{frame}{观测数据概况}
+  \begin{itemize}
+    \item 当前主要 PTA 项目：NANOGrav、PPTA、EPTA、CPTA
+    \item 观测脉冲星数量已超过 60 颗
+    \item 典型时间基线为 10--20 年，采样间隔约两周
+  \end{itemize}
+
+  \begin{alertblock}{数据挑战}
+    不同望远镜的系统噪声和色散量测量噪声需联合建模。
+  \end{alertblock}
+\end{frame}
+
 % ===== 第二节 =====
 \section{方法}
 
-\begin{frame}{新方法概述}
+\subsection{贝叶斯噪声建模}
+\begin{frame}{贝叶斯噪声建模}
   \begin{itemize}
     \item 提出基于贝叶斯框架的红噪声建模方案
-    \item 引入自适应频率分辨方法
+    \item 噪声参数与信号参数联合采样，避免偏差
+    \item 先验分布根据物理约束合理选取
+  \end{itemize}
+\end{frame}
+
+\subsection{自适应频率分辨}
+\begin{frame}{自适应频率分辨}
+  \begin{itemize}
+    \item 引入自适应频率分辨方法，动态调整频率格点
+    \item 在信号功率集中的频段提高分辨率
     \item 结合 MCMC 采样实现高效参数估计
   \end{itemize}
 
@@ -64,32 +97,46 @@
 % ===== 第三节 =====
 \section{结果}
 
-\begin{frame}{主要结果}
+\subsection{噪声去除性能}
+\begin{frame}{噪声去除性能}
   \begin{enumerate}
     \item 噪声去除效果显著提升（信噪比提高 30\%）
     \item 计算效率相比传统方法提高约 5 倍
     \item 在模拟和真实 IPTA DR2 数据上均验证有效
   \end{enumerate}
+\end{frame}
 
+\subsection{引力波信号恢复}
+\begin{frame}{引力波信号恢复}
   \begin{exampleblock}{示例}
     在 NANOGrav 15yr 数据集上的测试结果表明，
     新方法能够更准确地恢复注入的引力波信号。
   \end{exampleblock}
+
+  \begin{itemize}
+    \item 谱指数恢复误差从 $\pm 0.3$ 降至 $\pm 0.15$
+    \item 振幅偏差减少约 20\%
+  \end{itemize}
 \end{frame}
 
 % ===== 第四节 =====
 \section{总结与展望}
 
-\begin{frame}{总结与展望}
+\subsection{总结}
+\begin{frame}{总结}
   \begin{itemize}
     \item 本工作提出了一种新的红噪声去除方法
     \item 在模拟和真实数据上均取得了良好效果
-    \item 未来计划：
-      \begin{itemize}
-        \item 进一步优化算法性能
-        \item 拓展至空间引力波探测器数据分析
-        \item 与国际 PTA 合作组开展联合分析
-      \end{itemize}
+    \item 贝叶斯框架保证了参数估计的自洽性
+  \end{itemize}
+\end{frame}
+
+\subsection{未来展望}
+\begin{frame}{未来展望}
+  \begin{itemize}
+    \item 进一步优化算法性能，降低计算开销
+    \item 拓展至空间引力波探测器数据分析
+    \item 与国际 PTA 合作组开展联合分析
   \end{itemize}
 
   \vfill

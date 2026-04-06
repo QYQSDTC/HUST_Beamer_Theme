@@ -52,8 +52,8 @@
 \setbeamercolor{palette sidebar quaternary}{fg=HUSTBlueLight}
 \setbeamercolor{section in sidebar}{fg=white}
 \setbeamercolor{section in sidebar shaded}{fg=HUSTBlue!30!white}
-\setbeamercolor{subsection in sidebar}{fg=HUSTBlueLight}
-\setbeamercolor{subsection in sidebar shaded}{fg=HUSTBlue!20!white}
+\setbeamercolor{subsection in sidebar}{fg=white}
+\setbeamercolor{subsection in sidebar shaded}{fg=HUSTBlue!55!white}
 
 % Frame title
 \setbeamercolor{frametitle}{bg=HUSTBlue,fg=white}
@@ -92,11 +92,34 @@
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{institute}{size=\small}
 \setbeamerfont{date}{size=\footnotesize}
-\setbeamerfont{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
 \setbeamerfont{footline}{size=\tiny}
 \setbeamerfont{section in sidebar}{size=\scriptsize}
-\setbeamerfont{subsection in sidebar}{size=\tiny}
+\setbeamerfont{subsection in sidebar}{size=\scriptsize,series=\bfseries}
+\setbeamerfont{subsection in sidebar shaded}{size=\tiny}
 \setbeamerfont{block title}{series=\bfseries}
+
+%% ====================================================================
+%% Subsection in Sidebar — highlight current with indicator
+%% ====================================================================
+\setbeamertemplate{subsection in sidebar}{%
+  \begin{beamercolorbox}[wd=\beamer@sidebarwidth,leftskip=3pt,%
+    rightskip=1ex plus1fil,vmode]{subsection in sidebar}%
+    \vbox{}%
+    {\tiny$\blacktriangleright$}\,\insertsubsectionhead\par%
+    \vbox{}%
+    \vskip-1.5ex%
+  \end{beamercolorbox}%
+}
+\setbeamertemplate{subsection in sidebar shaded}{%
+  \begin{beamercolorbox}[wd=\beamer@sidebarwidth,leftskip=9pt,%
+    rightskip=1ex plus1fil,vmode]{subsection in sidebar shaded}%
+    \vbox{}%
+    \insertsubsectionhead\par%
+    \vbox{}%
+    \vskip-1.5ex%
+  \end{beamercolorbox}%
+}
 
 %% ====================================================================
 %% Disable Navigation Symbols
@@ -123,7 +146,9 @@
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=\dimexpr\paperwidth-\beamer@sidebarwidth\relax,%
       ht=2.5ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{palette secondary}%
-      \usebeamerfont{section in head/foot}\insertsectionhead%
+      \usebeamerfont{section in head/foot}%
+      \setbox0=\hbox{\insertsubsectionhead}%
+      \ifdim\wd0=0pt\insertsectionhead\else\insertsubsectionhead\fi%
     \end{beamercolorbox}%
   }%
 }
