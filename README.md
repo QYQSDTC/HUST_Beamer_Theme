@@ -6,7 +6,17 @@
 
 ## 预览
 
-![demo](demo.pdf)
+| 标题页 | 目录 |
+|:---:|:---:|
+| ![title](screenshots/demo-0.png) | ![toc](screenshots/demo-1.png) |
+
+| 内容页 | 区块样式 |
+|:---:|:---:|
+| ![content](screenshots/demo-2.png) | ![blocks](screenshots/demo-3.png) |
+
+| 列表与结果 | 总结页 |
+|:---:|:---:|
+| ![results](screenshots/demo-4.png) | ![summary](screenshots/demo-5.png) |
 
 ## 特性
 
